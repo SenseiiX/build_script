@@ -1,4 +1,4 @@
-#!/bin/bash
+#! /bin/bash
 
 rm -rf .repo/local_manifests
 repo init -u https://github.com/RisingOS-Revived/android -b sixteen-los --git-lfs
