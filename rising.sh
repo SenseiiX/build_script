@@ -15,6 +15,7 @@ dirs_to_remove=(
     out/target/product/munch
     out/target/product/vanilla
     out/target/product/gapps
+    out/target/product/core
     device/xiaomi/munch
     kernel/xiaomi/munch
     vendor/xiaomi/munch
@@ -41,8 +42,6 @@ echo "=== Building VANILLA variant ==="
 . build/envsetup.sh; \
 riseup munch user && rise b; \
 
-rm -rf out/target/product/vanilla out/target/product/gapps; \
-
 cd out/target/product && \
 mv munch vanilla && \
 cd ../../..; \
@@ -59,6 +58,20 @@ riseup munch user && rise b; \
 
 cd out/target/product && \
 mv munch gapps && \
+cd ../../..; \
+
+# CORE
+cd device/xiaomi/munch && \
+rm lineage_munch.mk && \
+mv core.txt lineage_munch.mk && \
+cd ../../..; \
+
+echo "=== Building CORE variant ==="
+. build/envsetup.sh; \
+riseup munch user && rise b; \
+
+cd out/target/product && \
+mv munch core && \
 cd ../../..; \
 
 echo "===== All builds completed successfully! ====="
