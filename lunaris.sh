@@ -1,7 +1,7 @@
 #! /bin/bash
 
 rm -rf .repo/local_manifests
-repo init -u https://github.com/SenseiiX/android -b sixteen-los --git-lfs
+repo init -u https://github.com/Lunaris-AOSP/android -b 16 --git-lfs
 rm -rf prebuilts/clang/host/linux-x86
 
 echo "==> Syncing sources..."
@@ -25,7 +25,7 @@ dirs_to_remove=(
 rm -rf "${dirs_to_remove[@]}"
 
 echo "=== Cloning device trees ==="
-git clone https://github.com/Project-SenX/android_device_xiaomi_munch -b rising-t device/xiaomi/munch
+git clone https://github.com/Project-SenX/android_device_xiaomi_munch -b lunaris device/xiaomi/munch
 git clone https://github.com/Project-SenX/android_vendor_xiaomi_munch vendor/xiaomi/munch
 git clone https://github.com/SenseiiX/fusionX_sm8250 -b stable-next kernel/xiaomi/munch
 git clone https://github.com/Project-SenX/android_hardware_xiaomi hardware/xiaomi
@@ -34,24 +34,12 @@ git clone https://github.com/munch-devs/android_hardware_dolby hardware/dolby
 git clone https://github.com/PocoF3Releases/packages_resources_devicesettings -b aosp-16 packages/resources/devicesettings
 git clone https://codeberg.org/munch-devs/android_vendor_xiaomi_miuicamera vendor/xiaomi/miuicamera
 
-# VANILLA
-echo "=== Building VANILLA variant ==="
-. build/envsetup.sh
-riseup munch user && \
-make installclean && \
-rise b
-mv out/target/product/munch out/target/product/vanilla
-
 # GAPPS
-cd device/xiaomi/munch
-rm lineage_munch.mk
-mv gapps.txt lineage_munch.mk
-cd ../../..
-
-echo "=== Building GAPPS variant ==="
-riseup munch user && \
+echo "=== Building GAPPS ==="
+. build/envsetup.sh
+lunch lineage_munch-bp2a-user && \
 make installclean && \
-rise b
+m lunaris
 mv out/target/product/munch out/target/product/gapps
 
 # CORE
@@ -66,4 +54,4 @@ make installclean && \
 rise b
 mv out/target/product/munch out/target/product/core
 
-echo "===== All builds completed successfully! ====="
+echo "===== Builds completed successfully! ====="
