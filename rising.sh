@@ -1,11 +1,11 @@
-#! /bin/bash
+#!/bin/bash
 
-rm -rf .repo/local_manifests; \
-repo init -u https://github.com/RisingOS-Revived/android -b sixteen-los --git-lfs; \
+rm -rf .repo/local_manifests
+repo init -u https://github.com/RisingOS-Revived/android -b sixteen-los --git-lfs
 rm -rf prebuilts/clang/host/linux-x86
 
 echo "==> Syncing sources..."
-/opt/crave/resync.sh; \
+/opt/crave/resync.sh
 
 export BUILD_USERNAME=SenX
 export BUILD_HOSTNAME=dev
@@ -28,50 +28,45 @@ dirs_to_remove=(
 rm -rf "${dirs_to_remove[@]}"
 
 echo "=== Cloning device trees ==="
-git clone https://github.com/SenseiiX/android_device_xiaomi_munch -b rising-16 device/xiaomi/munch; \
-git clone https://github.com/SenseiiX/android_vendor_xiaomi_munch -b 16 vendor/xiaomi/munch; \
-git clone https://github.com/SenseiiX/fusionX_sm8250 -b stable-next kernel/xiaomi/munch; \
-git clone https://github.com/SenseiiX/android_hardware_xiaomi -b bka-no-dolby hardware/xiaomi; \
-git clone https://codeberg.org/munch-devs/android_vendor_xiaomi_munch-firmware vendor/xiaomi/munch-firmware; \
-git clone https://github.com/munch-devs/android_hardware_dolby hardware/dolby; \
-git clone https://github.com/PocoF3Releases/packages_resources_devicesettings -b aosp-16 packages/resources/devicesettings; \
-git clone https://codeberg.org/munch-devs/android_vendor_xiaomi_miuicamera vendor/xiaomi/miuicamera; \
+git clone https://github.com/SenseiiX/android_device_xiaomi_munch -b rising-16 device/xiaomi/munch
+git clone https://github.com/SenseiiX/android_vendor_xiaomi_munch -b 16 vendor/xiaomi/munch
+git clone https://github.com/SenseiiX/fusionX_sm8250 -b stable-next kernel/xiaomi/munch
+git clone https://github.com/SenseiiX/android_hardware_xiaomi -b bka-no-dolby hardware/xiaomi
+git clone https://codeberg.org/munch-devs/android_vendor_xiaomi_munch-firmware vendor/xiaomi/munch-firmware
+git clone https://github.com/munch-devs/android_hardware_dolby hardware/dolby
+git clone https://github.com/PocoF3Releases/packages_resources_devicesettings -b aosp-16 packages/resources/devicesettings
+git clone https://codeberg.org/munch-devs/android_vendor_xiaomi_miuicamera vendor/xiaomi/miuicamera
 
 # VANILLA
 echo "=== Building VANILLA variant ==="
-. build/envsetup.sh; \
-riseup munch user && rise b; \
-
-cd out/target/product && \
-mv munch vanilla && \
-cd ../../..; \
+. build/envsetup.sh
+riseup munch user && \
+make installclean && \
+rise b
+mv out/target/product/munch out/target/product/vanilla
 
 # GAPPS
-cd device/xiaomi/munch && \
-rm lineage_munch.mk && \
-mv gapps.txt lineage_munch.mk && \
-cd ../../..; \
+cd device/xiaomi/munch
+rm lineage_munch.mk
+mv gapps.txt lineage_munch.mk
+cd ../../..
 
 echo "=== Building GAPPS variant ==="
-. build/envsetup.sh; \
-riseup munch user && rise b; \
-
-cd out/target/product && \
-mv munch gapps && \
-cd ../../..; \
+riseup munch user && \
+make installclean && \
+rise b
+mv out/target/product/munch out/target/product/gapps
 
 # CORE
-cd device/xiaomi/munch && \
-rm lineage_munch.mk && \
-mv core.txt lineage_munch.mk && \
-cd ../../..; \
+cd device/xiaomi/munch
+rm lineage_munch.mk
+mv core.txt lineage_munch.mk
+cd ../../..
 
 echo "=== Building CORE variant ==="
-. build/envsetup.sh; \
-riseup munch user && rise b; \
-
-cd out/target/product && \
-mv munch core && \
-cd ../../..; \
+riseup munch user && \
+make installclean && \
+rise b
+mv out/target/product/munch out/target/product/core
 
 echo "===== All builds completed successfully! ====="
