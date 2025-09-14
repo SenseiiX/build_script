@@ -1,7 +1,7 @@
 #! /bin/bash
 
 rm -rf .repo/local_manifests
-repo init -u https://github.com/RisingOS-Revived/android -b sixteen-los --git-lfs
+repo init -u https://github.com/SenseiiX/android -b sixteen-los --git-lfs
 rm -rf prebuilts/clang/host/linux-x86
 
 echo "==> Syncing sources..."
