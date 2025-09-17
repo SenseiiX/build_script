@@ -28,10 +28,10 @@ dirs_to_remove=(
 rm -rf "${dirs_to_remove[@]}"
 
 echo "=== Cloning device trees ==="
-git clone https://github.com/SenseiiX/android_device_xiaomi_munch -b rising-16 device/xiaomi/munch
-git clone https://github.com/SenseiiX/android_vendor_xiaomi_munch -b 16 vendor/xiaomi/munch
+git clone https://github.com/Project-SenX/android_device_xiaomi_munch -b rising-16 device/xiaomi/munch
+git clone https://github.com/Project-SenX/android_vendor_xiaomi_munch vendor/xiaomi/munch
 git clone https://github.com/SenseiiX/fusionX_sm8250 -b stable-next kernel/xiaomi/munch
-git clone https://github.com/munch-devs/android_hardware_xiaomi -b 16 hardware/xiaomi
+git clone https://github.com/Project-SenX/android_vendor_xiaomi_munch hardware/xiaomi
 git clone https://codeberg.org/munch-devs/android_vendor_xiaomi_munch-firmware vendor/xiaomi/munch-firmware
 git clone https://github.com/munch-devs/android_hardware_dolby hardware/dolby
 git clone https://github.com/PocoF3Releases/packages_resources_devicesettings -b aosp-16 packages/resources/devicesettings
