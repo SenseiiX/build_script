@@ -1,7 +1,7 @@
 #! /bin/bash
 
 rm -rf .repo/local_manifests
-repo init -u https://github.com/SenseiiX/android -b sixteen-los --git-lfs
+repo init -u https://github.com/RisingOS-Revived/android -b sixteen-los --git-lfs
 rm -rf prebuilts/clang/host/linux-x86
 
 echo "==> Syncing sources..."
@@ -26,7 +26,7 @@ rm -rf "${dirs_to_remove[@]}"
 
 echo "=== Cloning device trees ==="
 git clone https://github.com/Project-SenX/android_device_xiaomi_munch -b rising-t device/xiaomi/munch
-git clone https://github.com/Project-SenX/android_vendor_xiaomi_munch vendor/xiaomi/munch
+git clone https://github.com/Project-SenX/android_vendor_xiaomi_munch -b 16-t vendor/xiaomi/munch
 git clone https://github.com/SenseiiX/fusionX_sm8250 -b stable-next kernel/xiaomi/munch
 git clone https://github.com/Project-SenX/android_hardware_xiaomi hardware/xiaomi
 git clone https://codeberg.org/munch-devs/android_vendor_xiaomi_munch-firmware vendor/xiaomi/munch-firmware
