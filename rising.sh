@@ -29,10 +29,10 @@ git clone https://github.com/Project-SenX/android_device_xiaomi_munch -b rising-
 git clone https://github.com/Project-SenX/android_vendor_xiaomi_munch -b 16-t vendor/xiaomi/munch
 git clone https://github.com/SenseiiX/fusionX_sm8250 -b wip-next kernel/xiaomi/munch
 git clone https://github.com/Project-SenX/android_hardware_xiaomi hardware/xiaomi
-git clone https://codeberg.org/munch-devs/android_vendor_xiaomi_munch-firmware vendor/xiaomi/munch-firmware
+git clone https://github.com/Project-SenX/android_vendor_xiaomi_munch-firmware vendor/xiaomi/munch-firmware
 git clone https://github.com/munch-devs/android_hardware_dolby hardware/dolby
 git clone https://github.com/PocoF3Releases/packages_resources_devicesettings -b aosp-16 packages/resources/devicesettings
-git clone https://codeberg.org/munch-devs/android_vendor_xiaomi_miuicamera vendor/xiaomi/miuicamera
+git clone https://github.com/Project-SenX/android_vendor_xiaomi_miuicamera -b vic vendor/xiaomi/miuicamera
 
 # VANILLA
 echo "=== Building VANILLA variant ==="
