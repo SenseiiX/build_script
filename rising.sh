@@ -37,7 +37,7 @@ git clone https://github.com/Project-SenX/android_vendor_xiaomi_miuicamera -b vi
 # VANILLA
 echo "=== Building VANILLA variant ==="
 . build/envsetup.sh
-riseup munch userdebug && \
+riseup munch user && \
 make installclean && \
 rise b
 mv out/target/product/munch out/target/product/vanilla
@@ -50,7 +50,7 @@ cd ../../..
 
 echo "=== Building GAPPS variant ==="
 . build/envsetup.sh
-riseup munch userdebug && \
+riseup munch user && \
 make installclean && \
 rise b
 mv out/target/product/munch out/target/product/gapps
@@ -63,7 +63,7 @@ cd ../../..
 
 echo "=== Building CORE variant ==="
 . build/envsetup.sh
-riseup munch userdebug && \
+riseup munch user && \
 make installclean && \
 rise b
 mv out/target/product/munch out/target/product/core
