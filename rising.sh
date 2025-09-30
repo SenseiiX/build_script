@@ -25,7 +25,7 @@ dirs_to_remove=(
 rm -rf "${dirs_to_remove[@]}"
 
 echo "=== Cloning device trees ==="
-git clone https://github.com/Project-SenX/android_device_xiaomi_munch -b test2 device/xiaomi/munch
+git clone https://github.com/Project-SenX/android_device_xiaomi_munch -b 16r2 device/xiaomi/munch
 git clone https://github.com/Project-SenX/android_vendor_xiaomi_munch -b 16-t vendor/xiaomi/munch
 git clone https://github.com/SenseiiX/fusionX_sm8250 -b wip-next kernel/xiaomi/munch
 git clone https://github.com/Project-SenX/android_hardware_xiaomi hardware/xiaomi
@@ -50,7 +50,6 @@ cd ../../..
 
 echo "=== Building GAPPS variant ==="
 . build/envsetup.sh
-. build/envsetup.sh
 riseup munch userdebug && \
 make installclean && \
 rise b
@@ -63,7 +62,6 @@ mv core.txt lineage_munch.mk
 cd ../../..
 
 echo "=== Building CORE variant ==="
-. build/envsetup.sh
 . build/envsetup.sh
 riseup munch userdebug && \
 make installclean && \
