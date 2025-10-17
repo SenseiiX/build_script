@@ -32,7 +32,7 @@ git clone https://github.com/PocoF3Releases/packages_resources_devicesettings -b
 git clone https://github.com/Project-SenX/android_vendor_xiaomi_miuicamera -b vic vendor/xiaomi/miuicamera
 
 . build/envsetup.sh
-axion munch gms pico
+axion munch user gms pico
 ax -br
 
 echo "===== builds completed successfully! ====="
