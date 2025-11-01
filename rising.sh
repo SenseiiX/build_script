@@ -12,11 +12,7 @@ else
 fi
 
 echo "==> Cleaning old outputs and device/vendor/hardware trees..."
-dirs_to_remove=(
-    out/target/product/munch
-    out/target/product/vanilla
-    out/target/product/gapps
-    out/target/product/core
+dirs_to_remove=( 
     device/xiaomi/munch
     kernel/xiaomi/munch
     vendor/xiaomi/munch
