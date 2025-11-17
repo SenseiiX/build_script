@@ -21,6 +21,7 @@ dirs_to_remove=(
     kernel/xiaomi/munch
     vendor/xiaomi/munch
     vendor/xiaomi/munch-firmware
+    vendor/lineage-priv/keys
     hardware/xiaomi
     hardware/dolby
     vendor/xiaomi/miuicamera
@@ -34,10 +35,12 @@ git clone https://github.com/SenseiiX/fusionX_sm8250 -b rise kernel/xiaomi/munch
 git clone https://github.com/Project-SenX/android_hardware_xiaomi hardware/xiaomi
 git clone https://github.com/Project-SenX/android_vendor_xiaomi_munch-firmware vendor/xiaomi/munch-firmware
 git clone https://github.com/munch-devs/android_hardware_dolby hardware/dolby
-git clone https://github.com/Project-SenX/android_vendor_xiaomi_miuicamera -b vic vendor/xiaomi/miuicamera
+git clone https://github.com/Project-SenX/android_vendor_xiaomi_miuicamera -b 16 vendor/xiaomi/miuicamera
+git clone https://github.com/Project-SenX/priv-keys -b 16 vendor/lineage-priv/keys
 
 # VANILLA
 echo "=== Building VANILLA variant ==="
+. build/envsetup.sh
 . build/envsetup.sh
 riseup munch user && \
 rise b
@@ -51,6 +54,7 @@ cd ../../..
 
 echo "=== Building GAPPS variant ==="
 . build/envsetup.sh
+. build/envsetup.sh
 riseup munch user && \
 rise b
 mv out/target/product/munch out/target/product/gapps
@@ -62,6 +66,7 @@ mv core.txt lineage_munch.mk
 cd ../../..
 
 echo "=== Building CORE variant ==="
+. build/envsetup.sh
 . build/envsetup.sh
 riseup munch user && \
 rise b
