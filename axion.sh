@@ -21,7 +21,7 @@ dirs_to_remove=(
     kernel/xiaomi/munch
     vendor/xiaomi/munch
     vendor/xiaomi/munch-firmware
-    vendor/lineage-prive/keys
+    vendor/lineage-priv/keys
     hardware/xiaomi
     hardware/dolby
     vendor/xiaomi/miuicamera
