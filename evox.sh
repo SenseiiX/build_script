@@ -1,7 +1,7 @@
 #! /bin/bash
 
 rm -rf .repo/local_manifests
-repo init -u https://github.com/AxionAOSP/android.git -b lineage-23.0 --git-lfs
+repo init -u https://github.com/Evolution-X/manifest -b bq1 --git-lfs
 rm -rf prebuilts/clang/host/linux-x86
 
 echo "==> Syncing sources..."
@@ -15,13 +15,11 @@ fi
 echo "==> Cleaning old outputs and device/vendor/hardware trees..."
 dirs_to_remove=(
     out/target/product/munch
-    out/target/product/gapps
-    out/target/product/vanilla
     device/xiaomi/munch
     kernel/xiaomi/munch
     vendor/xiaomi/munch
     vendor/xiaomi/munch-firmware
-    vendor/lineage-priv/keys
+    vendor/evolution-priv/keys
     hardware/xiaomi
     hardware/dolby
     vendor/xiaomi/miuicamera
@@ -29,26 +27,17 @@ dirs_to_remove=(
 rm -rf "${dirs_to_remove[@]}"
 
 echo "=== Cloning device trees ==="
-git clone https://github.com/Project-SenX/android_device_xiaomi_munch -b ax device/xiaomi/munch
+git clone https://github.com/Project-SenX/android_device_xiaomi_munch -b evox device/xiaomi/munch
 git clone https://github.com/Project-SenX/android_vendor_xiaomi_munch -b 16 vendor/xiaomi/munch
-git clone https://github.com/SenseiiX/fusionX_sm8250 -b pure kernel/xiaomi/munch
+git clone https://github.com/SenseiiX/fusionX_sm8250 -b mod kernel/xiaomi/munch
 git clone https://github.com/Project-SenX/android_hardware_xiaomi hardware/xiaomi
 git clone https://github.com/Project-SenX/android_vendor_xiaomi_munch-firmware vendor/xiaomi/munch-firmware
 git clone https://github.com/Project-SenX/android_hardware_dolby hardware/dolby
 git clone https://github.com/Project-SenX/android_vendor_xiaomi_miuicamera vendor/xiaomi/miuicamera
-git clone https://github.com/Project-SenX/priv-keys -b 16 vendor/lineage-priv/keys
+git clone https://github.com/Project-SenX/priv-keys -b evox vendor/evolution-priv/keys
 
-echo "=== Starting GMS (Pico) build ==="
+echo "=== Starting Build ==="
 . build/envsetup.sh
-axion munch user gms pico
-ax -br
-mv out/target/product/munch out/target/product/gapps
+lunch lineage_munch-bp3a-user
+m evolution
 
-echo "=== Starting Vanilla (AOSP) build ==="
-. build/envsetup.sh
-axion munch user va
-ax -br
-mv out/target/product/munch out/target/product/vanilla
-
-
-echo "=== All builds completed successfully! ==="
