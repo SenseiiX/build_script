@@ -30,7 +30,7 @@ rm -rf "${dirs_to_remove[@]}"
 
 echo "=== Cloning device trees ==="
 git clone https://github.com/Project-SenX/android_device_xiaomi_munch -b ax device/xiaomi/munch
-git clone https://github.com/Project-SenX/android_device_xiaomi_sm8250-common -b cleanup device/xiaomi/sm8250-common
+git clone https://github.com/Project-SenX/android_device_xiaomi_sm8250-common -b device/xiaomi/sm8250-common
 git clone https://github.com/Project-SenX/android_vendor_xiaomi_munch vendor/xiaomi/munch
 git clone https://github.com/Project-SenX/android_vendor_xiaomi_sm8250-common vendor/xiaomi/sm8250-common
 git clone https://github.com/SenseiiX/fusionX_sm8250 -b mod kernel/xiaomi/sm8250
