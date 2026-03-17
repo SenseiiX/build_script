@@ -1,6 +1,6 @@
 #!/bin/bash
 rm -rf .repo/local_manifests
-repo init -u https://github.com/AxionAOSP/android.git -b lineage-23.1 --git-lfs
+repo init -u https://github.com/AxionAOSP/android.git -b lineage-23.2 --git-lfs
 
 # Clone local manifest
 git clone https://github.com/Project-SenX/local_manifest -b axion .repo/local_manifests
