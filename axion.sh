@@ -3,7 +3,7 @@ rm -rf .repo/local_manifests
 repo init -u https://github.com/AxionAOSP/android.git -b lineage-23.2 --git-lfs
 
 # Clone local manifest
-git clone https://github.com/Project-SenX/local_manifest -b axion .repo/local_manifests
+git clone https://github.com/SenX-Project/local_manifest -b ax .repo/local_manifests
 
 echo "==> Syncing sources..."
 if [ -f /opt/crave/resync.sh ]; then
@@ -12,8 +12,15 @@ else
     repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j$(nproc --all)
 fi
 
+
+# ── Build ─────────────────────────────────────────────────────────────────────
+echo "==> Cleaning old outputs..."
+rm -rf out/target/product/munch out/target/product/gapps
+
+echo "=== Starting GMS (Pico) build ==="
+. build/envsetup.sh
 # ── KernelSU Patch ────────────────────────────────────────────────────────────
-KERNEL_DIR="kernel/xiaomi/sm8250"
+KERNEL_DIR="kernel/xiaomi/munch"
 PATCH_SCRIPT="nextpatch.sh"
 if [ -f "$KERNEL_DIR/$PATCH_SCRIPT" ]; then
     echo "Found $PATCH_SCRIPT in $KERNEL_DIR. Applying KernelSU patch."
@@ -46,13 +53,6 @@ if [ ! -d "$CLANG_DIR" ]; then
 else
     echo "Clang directory already exists. Skipping download."
 fi
-
-# ── Build ─────────────────────────────────────────────────────────────────────
-echo "==> Cleaning old outputs..."
-rm -rf out/target/product/munch out/target/product/gapps
-
-echo "=== Starting GMS (Pico) build ==="
-. build/envsetup.sh
 axion munch user gms pico
 ax -br
 
