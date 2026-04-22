@@ -21,6 +21,7 @@ dirs_to_remove=(
 rm -rf "${dirs_to_remove[@]}"
 
 # Check if the clang directory does NOT exist
+CLANG_DIR="prebuilts/clang/host/linux-x86/clang-r547379"
 if [ ! -d "$CLANG_DIR" ]; then
   echo "Clang directory not found. Cloning..."
   mkdir -p "$CLANG_DIR"
@@ -30,7 +31,6 @@ if [ ! -d "$CLANG_DIR" ]; then
 else
   echo "Clang directory already exists. Skipping download."
 fi
-CLANG_DIR="prebuilts/clang/host/linux-x86/clang-r547379"
 
 echo "=== Starting GMS build ==="
 . build/envsetup.sh
