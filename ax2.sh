@@ -26,8 +26,8 @@ axion munch user gms
 ax -br
 mv out/target/product/munch out/target/product/gapps
 
-echo "=== Starting Vanilla build ==="
-. build/envsetup.sh
-axion munch user va
-ax -br
-mv out/target/product/munch out/target/product/vanilla
+#echo "=== Starting Vanilla build ==="
+#. build/envsetup.sh
+#axion munch user va
+#ax -br
+#mv out/target/product/munch out/target/product/vanilla
