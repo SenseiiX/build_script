@@ -21,6 +21,6 @@ rm -rf "${dirs_to_remove[@]}"
 
 echo "=== Starting GMS build ==="
 . build/envsetup.sh
-axion munch user pico
+axion rodin user pico
 ax -br
-mv out/target/product/munch out/target/product/gapps
+mv out/target/product/rodin out/target/product/gapps
