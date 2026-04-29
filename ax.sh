@@ -32,11 +32,10 @@ else
   echo "Clang directory already exists. Skipping download."
 fi
 
-. build/envsetup.sh
-gk -s
 echo "=== Starting GMS build ==="
+. build/envsetup.sh
 axion munch user pico
-ax -br -j$(nproc --all)                     
+ax -br
 mv out/target/product/munch out/target/product/gapps
 
 #echo "=== Starting Vanilla build ==="
